@@ -42,6 +42,23 @@ class WriteLastLine:
             save_file.write(self.last_line)
 
 
+class AskForNewGame:
+    _answer_opt_ = ["yes", "no"]
+
+    def check_answer(self):
+        while True:
+            answer = input("Would you like start a new game?: ")
+            if answer not in self._answer_opt_:
+                print(f"[WARNING] You entered wrong option.\nAvailable options are {_answer_opt_}.")
+                continue
+            else:
+                if answer == "yes":
+                    game()
+                else:
+                    print("Quitting game.")
+                    quit()
+
+
 def game():
     random_number = randint(1, 10)
     to_low = 0
@@ -76,6 +93,8 @@ def game():
                 SaveToFile(turn_opt=turn, guess_opt=guess, option_opt="guess_count").save()
                 print("guess count:", guess_count)
                 WriteLastLine().write()
+
+                AskForNewGame().check_answer()
                 break
 
 
