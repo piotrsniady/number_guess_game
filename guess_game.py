@@ -1,4 +1,4 @@
-from random import randint
+import random
 import datetime
 import os
 
@@ -49,7 +49,7 @@ class AskForNewGame:
         while True:
             answer = input("Would you like start a new game?: ")
             if answer not in self._answer_opt_:
-                print(f"[WARNING] You entered wrong option.\nAvailable options are {_answer_opt_}.")
+                print(f"[WARNING] You entered wrong option.\nAvailable options are {self._answer_opt_}.")
                 continue
             else:
                 if answer == "yes":
@@ -60,7 +60,7 @@ class AskForNewGame:
 
 
 def game():
-    random_number = randint(1, 10)
+    random_number = random.randint(1, 10)
     to_low = 0
     to_high = 0
     turn = 0
